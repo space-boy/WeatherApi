@@ -21,7 +21,7 @@ import java.util.List;
 public class MetDataScraper {
 
     private static final String TAG = "MetDataScraper";
-    private static final String API_KEY = "YOUR-API-KEY-HERE";
+    private static final String API_KEY = "c15d9cb4-2958-4477-9961-0d59c3b531eb";
     private static final Uri ENDPOINT  = Uri.parse("http://datapoint.metoffice.gov.uk/public/data/")
                                         .buildUpon().build();
 

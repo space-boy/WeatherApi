@@ -178,7 +178,8 @@ public class LocSpecFragment extends Fragment{
 
         public void bindReport(WeatherReport report){
             mWeatherCode.setText(decodeWeather(report.getWeatherCode()));
-            mTemperature.setText(String.valueOf(report.getTemperature()));
+            mTemperature.setText(getActivity().getResources()
+                    .getString(R.string.temperature, String.valueOf(report.getTemperature())));
         }
     }
 
@@ -245,7 +246,6 @@ public class LocSpecFragment extends Fragment{
                 mWeatherReportList.size();
                 setupList();
             }
-
         }
     }
 }
