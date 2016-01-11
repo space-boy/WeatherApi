@@ -140,6 +140,7 @@ public class MetDataScraper {
             report.setVisiblity(reportObject.get("V").toString());
             report.setWindSpeed(Integer.valueOf(reportObject.get("S").toString()));
             report.setWeatherCode(Integer.valueOf(reportObject.get("W").toString()));
+            report.setTime((jsonReportArray.getJSONObject(i).get("value").toString()));
 
             mReports.add(report);
         }

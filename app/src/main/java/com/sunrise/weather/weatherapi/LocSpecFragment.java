@@ -23,7 +23,6 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class LocSpecFragment extends Fragment{
 
@@ -33,6 +32,23 @@ public class LocSpecFragment extends Fragment{
     private RecyclerView mRecyclerView;
     private ArrayList<WeatherReport> mWeatherReportList = new ArrayList<>();
     private RecyclerView.Adapter mRepAdapter;
+    private Callbacks mCallback;
+
+    public interface Callbacks {
+        void onReportSelected(WeatherReport report);
+    }
+
+    @Override
+    public void onAttach(Context activity) {
+        super.onAttach(activity);
+        mCallback = (Callbacks) activity;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallback = null;
+    }
 
     public static LocSpecFragment newInstance(){
         return new LocSpecFragment();
@@ -174,6 +190,7 @@ public class LocSpecFragment extends Fragment{
             super(itemView);
             mWeatherCode = (TextView) itemView.findViewById(R.id.weather_textview);
             mTemperature = (TextView) itemView.findViewById(R.id.temperature_textview);
+
         }
 
         public void bindReport(WeatherReport report){
@@ -186,6 +203,7 @@ public class LocSpecFragment extends Fragment{
     private class RepAdapter extends RecyclerView.Adapter<RepHolder> implements View.OnClickListener{
 
         ArrayList<WeatherReport> mWeatherReports;
+        WeatherReport mWeatherReport;
 
         public RepAdapter(ArrayList<WeatherReport> weatherReps){
             mWeatherReports = weatherReps;
@@ -195,13 +213,17 @@ public class LocSpecFragment extends Fragment{
         public RepHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
             View view = inflater.inflate(R.layout.rep_list_item,parent,false);
+            view.setOnClickListener(this);
+
             return new RepHolder(view);
         }
 
         @Override
         public void onBindViewHolder(RepHolder holder, int position) {
             WeatherReport report = mWeatherReports.get(position);
+            mWeatherReport = report;
             holder.bindReport(report);
+
         }
 
         @Override
@@ -211,10 +233,9 @@ public class LocSpecFragment extends Fragment{
 
         @Override
         public void onClick(View v) {
-            //create new fragment or new activity here
+            mCallback.onReportSelected(mWeatherReport);
         }
     }
-
 
     private class GetMetData extends AsyncTask<Double, Void, ArrayList<WeatherReport>> {
 
@@ -244,6 +265,9 @@ public class LocSpecFragment extends Fragment{
 
             if(mWeatherReportList != null) {
                 mWeatherReportList.size();
+                for(WeatherReport wr : mWeatherReportList) {
+                    WeatherRepSingleton.getWeatherRepSingleton(getActivity()).AddWeatherReport(wr);
+                }
                 setupList();
             }
         }

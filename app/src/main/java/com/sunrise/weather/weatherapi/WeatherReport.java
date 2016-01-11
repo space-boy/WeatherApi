@@ -1,6 +1,8 @@
 package com.sunrise.weather.weatherapi;
 
 
+import java.util.UUID;
+
 //class to hold weather reports returned from server
 public class WeatherReport {
 
@@ -14,8 +16,17 @@ public class WeatherReport {
     private int windGust;
     private int relativeTemperature;
     private String location;
-    private int time;
+    private String time;
     private String WindDir;
+    private UUID mWeatherId;
+
+    public WeatherReport(){
+        mWeatherId = UUID.randomUUID();
+    }
+
+    public UUID getWeatherId() {
+        return mWeatherId;
+    }
 
     public String getWindDir() {
         return WindDir;
@@ -33,11 +44,11 @@ public class WeatherReport {
         this.location = location;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
