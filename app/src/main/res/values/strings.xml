@@ -2,6 +2,13 @@
     <string name="app_name">Met Office Weather API</string>
     <string name="weather_icon_desc">Weather Icon</string>
     <string name="temperature">Temperature: %1$s c•</string>
+    <string name="weather_type">weather type: %1$s</string>
     <string name="location">location: %1$s</string>
+    <string name="wind_dir">Wind direction %1$s</string>
+    <string name="wind_gust">Wind gust: %1$s</string>
+    <string name="humidity">Humidity: %1$s %%</string>
+    <string name="rain_chance">Percentage chance of rain %1$s %%</string>
+    <string name="wind_speed">Wind speed %1$s mph</string>
+    <string name="feels_temp">feels like temperature: %1$s c•</string>
 
 </resources>

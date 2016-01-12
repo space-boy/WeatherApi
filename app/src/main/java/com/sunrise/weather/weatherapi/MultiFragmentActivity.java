@@ -33,10 +33,17 @@ public abstract class MultiFragmentActivity extends AppCompatActivity implements
     @Override
     public void onReportSelected(WeatherReport report) {
         if(findViewById(R.id.detail_fragment_container) == null){
-            //for when a seperate activity needs to be started
+            //may become a seperate activity in future
+            Fragment reportDetail = ReportDetailFragment.newInstance(report.getWeatherId());
+            FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction().replace(R.id.detail_fragment_container,reportDetail).commit();
+
         }else{
             Fragment reportDetail = ReportDetailFragment.newInstance(report.getWeatherId());
             FragmentManager fm = getSupportFragmentManager();
+
+            fm.beginTransaction().remove(reportDetail).commit();
+
             fm.beginTransaction().replace(R.id.detail_fragment_container,reportDetail).commit();
         }
     }

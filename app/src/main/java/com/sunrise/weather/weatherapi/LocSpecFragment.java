@@ -175,21 +175,21 @@ public class LocSpecFragment extends Fragment{
                 return "Thunder Shower(day)";
             case 30:
                 return "Thunder";
-
-
         }
         return "N/A";
     }
 
-    private class RepHolder extends RecyclerView.ViewHolder {
+    private class RepHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mWeatherCode;
         private TextView mTemperature;
+        private WeatherReport mWeatherReport;
 
         public RepHolder(View itemView) {
             super(itemView);
             mWeatherCode = (TextView) itemView.findViewById(R.id.weather_textview);
             mTemperature = (TextView) itemView.findViewById(R.id.temperature_textview);
+            itemView.setOnClickListener(this);
 
         }
 
@@ -197,10 +197,16 @@ public class LocSpecFragment extends Fragment{
             mWeatherCode.setText(decodeWeather(report.getWeatherCode()));
             mTemperature.setText(getActivity().getResources()
                     .getString(R.string.temperature, String.valueOf(report.getTemperature())));
+            mWeatherReport = report;
+        }
+
+        @Override
+        public void onClick(View v) {
+            mCallback.onReportSelected(mWeatherReport);
         }
     }
 
-    private class RepAdapter extends RecyclerView.Adapter<RepHolder> implements View.OnClickListener{
+    private class RepAdapter extends RecyclerView.Adapter<RepHolder> {
 
         ArrayList<WeatherReport> mWeatherReports;
         WeatherReport mWeatherReport;
@@ -213,7 +219,6 @@ public class LocSpecFragment extends Fragment{
         public RepHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
             View view = inflater.inflate(R.layout.rep_list_item,parent,false);
-            view.setOnClickListener(this);
 
             return new RepHolder(view);
         }
@@ -231,10 +236,11 @@ public class LocSpecFragment extends Fragment{
             return mWeatherReports.size();
         }
 
-        @Override
-        public void onClick(View v) {
-            mCallback.onReportSelected(mWeatherReport);
-        }
+//        @Override
+//        public void onClick(View v) {
+//            Log.i(TAG,"rep: " + mWeatherReport.getWeatherId());
+//
+//        }
     }
 
     private class GetMetData extends AsyncTask<Double, Void, ArrayList<WeatherReport>> {
@@ -267,6 +273,7 @@ public class LocSpecFragment extends Fragment{
                 mWeatherReportList.size();
                 for(WeatherReport wr : mWeatherReportList) {
                     WeatherRepSingleton.getWeatherRepSingleton(getActivity()).AddWeatherReport(wr);
+
                 }
                 setupList();
             }
