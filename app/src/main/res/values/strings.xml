@@ -2,6 +2,6 @@
     <string name="app_name">Met Office Weather API</string>
     <string name="weather_icon_desc">Weather Icon</string>
     <string name="temperature">Temperature: %1$s c•</string>
-    <string name="location">location: %$s</string>
+    <string name="location">location: %1$s</string>
 
 </resources>

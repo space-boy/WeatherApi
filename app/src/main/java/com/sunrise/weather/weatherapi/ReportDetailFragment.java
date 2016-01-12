@@ -39,7 +39,7 @@ public class ReportDetailFragment extends Fragment {
 
         TextView mLocationTextview = (TextView) v.findViewById(R.id.location_textview);
 
-        mLocationTextview.setText(mWeatherReport.getLocation());
+        mLocationTextview.setText(getResources().getString(R.string.location,String.valueOf(mWeatherReport.getLocation())));
         return v;
 
     }

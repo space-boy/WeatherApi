@@ -50,6 +50,9 @@ public class HomeActivityTest extends ActivityInstrumentationTestCase2<HomeActiv
         //check we can create a view ok
         assertNotNull(mRec.getAdapter().onCreateViewHolder(mRec,R.layout.report_list_fragment));
 
+        //check we have at least one item in the adapter, so we know we have items in the view
+        assertNotNull(mRec.getAdapter().getItemId(0));
+
     }
 
     public void testSanity(){
