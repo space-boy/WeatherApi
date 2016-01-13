@@ -14,47 +14,65 @@
 
     <TextView
         android:id="@+id/time_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/weather_type_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/temperature_textview_detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/wind_speed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/rain_chance_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/humidity_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/wind_gust_speed_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/feels_like_temperature_textview"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/wind_direction_textview"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>
