@@ -2,7 +2,6 @@ package com.sunrise.weather.weatherapi;
 
 
 import android.content.Context;
-
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -33,11 +32,11 @@ public class WeatherRepSingleton {
 
     public WeatherReport getWeatherReport(UUID weatherReportId){
         for(WeatherReport wr : mWeatherReports){
-            if(weatherReportId == wr.getWeatherId()){
+
+            if(weatherReportId.equals(wr.getWeatherId())){
                 return wr;
             }
         }
         return null;
     }
-
 }

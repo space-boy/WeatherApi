@@ -3,13 +3,11 @@ package com.sunrise.weather.weatherapi;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import java.util.UUID;
 
@@ -38,6 +36,7 @@ public class ReportDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View v = inflater.inflate(R.layout.report_detail_fragment,container,false);
 
         TextView mLocationTextview = (TextView) v.findViewById(R.id.location_textview);
